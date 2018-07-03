@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<config>	
+	<!------------------------------------------------
+		【苏州科奥视频播放器 v4.0.4】
+		
+		本视频播放器开启以后，会在任务栏右下角生成系统托盘图标，鼠标右键点击后：
+		1. 点击【窗体重定位>使用方向键】后，可以使用方向键移动窗体；
+		2. 移动窗体后必须点击【保存窗体位置>锁定方向键】； 
+		3. 窗体分辨率和拉伸方式请在下方配置中填写；
+		4. 视频播放器接收UDP指令：
+			A. 【replay】 	-重头开始播放
+			B. 【play】 		-继续播放
+			C. 【stop】 		-停止播放，暗场
+			D. 【pause】 	-暂停播放
+			E. 【volumedown】-声音降低10%
+			F. 【volumeup】	-声音提高10%
+		如有问题请联系【沈馨  18362711321】
+	 ------------------------------------------------->
+	  	 
+	  	 
+	<!-- UDP通信设置 ---------------------------------->
+	<UDP>	
+		<Port>9000</Port>	<!-- 监听端口号 -->
+	</UDP>	  	 
+	
+	
+	<!-- 视频设置 ------------------------------------->
+	<LoaderMax load="true" prependURLs="media/">	<!-- 视频文件请放置于【Media】文件夹下 -->
+		<!-- 下面视频配置中，
+			1. 【name】为标签，不要更改
+			2. 【url】填视频文件名，视频必须是H.264编码；
+			3. 【autoPlay】是否自动播放，【true/false】；
+			3. 【repeat】重复播放次数，0为只播放一次，-1为无限循环播放；
+			4. 【stretch】为拉伸模式，会根据屏幕的改变： 
+				A. 填【stretch】，拉伸，完全贴合屏幕分辨率；
+				B. 填【proportionalInside】，不拉伸，最大不超过屏幕分辨率，不足的部分上下或左右留黑；
+				C. 填【proportionalOutside】,不拉伸，最小不低于屏幕分辨率，超出的部分可能被裁去；
+		-->
+		<VideoLoader name="movie" url="苏州农行 11.30 4300-1200_3_1_a.mp4" width="5760" height ="1200" autoPlay="false" repeat ="0" scaleMode ="stretch" />
+		<VideoLoader name="moviebg" url="huanyingping.mp4" width="5760" height ="1200" autoPlay="false" repeat ="-1" scaleMode ="stretch" />
+		<!-- 影片未播放时的背景图，可以接受的格式：【JPG】【JEPG】【PNG】 -->
+		<ImageLoader name="preface" url="background.jpg" width="5760" height ="1200" scaleMode="stretch"/>
+	</LoaderMax>			
+</config>
